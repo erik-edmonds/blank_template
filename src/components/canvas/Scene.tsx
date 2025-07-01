@@ -5,8 +5,13 @@ import { Preload } from '@react-three/drei'
 import { r3f } from '@/helpers/global'
 import * as THREE from 'three'
 import {Providers} from '../../../app/providers'
+import { useState } from 'react'
+import { Menu} from '../dom/Menu'
 
 export default function Scene({ ...props }) {
+  const [section, setSection] = useState<number>(0);
+  const [menuOpened, setMenuOpened] = useState(false);
+
   // Everything defined in here will persist between route changes, only children are swapped
   return (
     <Providers>
@@ -16,6 +21,7 @@ export default function Scene({ ...props }) {
           <r3f.Out />
         <Preload all />
       </Canvas>
+      <Menu onSectionChange={setSection} menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
     </Providers>
   )
 }
