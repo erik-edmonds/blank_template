@@ -27,7 +27,7 @@ const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mo
 export default function Page() {
   return (
     <>
-      <div className='mx-auto flex size-full flex-col flex-wrap items-center md:flex-row '>
+      <div className='mx-auto flex size-full flex-col flex-wrap items-center md:flex-row bg-[#f6efe5]'>
         {/* jumbo */}
         <div className='flex w-full flex-col items-start justify-center p-12 text-center md:w-2/5 md:text-left'>
           <h1 className='my-4 text-5xl font-bold leading-tight'>Hi!</h1>
