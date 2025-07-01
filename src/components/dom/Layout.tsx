@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import dynamic from 'next/dynamic'
+
 const Scene = dynamic(() => import('@/components/canvas/Scene'), { ssr: false })
 
 const Layout = ({ children }) => {
@@ -16,8 +17,7 @@ const Layout = ({ children }) => {
         height: '100%',
         overflow: 'auto',
         touchAction: 'auto',
-      }}
-    >
+      }}>
       {children}
       <Scene
         style={{
