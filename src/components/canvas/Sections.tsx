@@ -22,13 +22,13 @@ const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mo
 
 const Section = (props) => {
   const { children } = props;
-  return <section className={`h-screen w-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start justify-center`}>{children}</section>;
+  return <section className={`h-screen w-screen max-w-screen-2xl mx-auto justify-center`}>{children}</section>;
 }
 
 export const Interface = () => {
   return (
     <>
-      <div className='mx-auto flex w-full flex-col flex-wrap items-center p-12 md:flex-row  lg:w-4/5'>
+      <div>
         {/* first row */}
         <FirstRow />
         {/* second row */}
@@ -41,12 +41,8 @@ export const Interface = () => {
 const FirstRow = () => {
   return (
     <Section>
-      <div className='relative h-48 w-full py-6 sm:w-1/2 md:my-12 md:mb-40'>
-        <h2 className='mb-3 text-3xl font-bold leading-none text-gray-800'>Events are propagated</h2>
-        <p className='mb-8 text-gray-600'>Drag, scroll, pinch, and rotate the canvas to explore the 3D scene.</p>
-      </div>
-      <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
-        <View orbit className='relative h-full  sm:h-48 sm:w-full'>
+      <div className='relative h-screen w-screen'>
+        <View className='relative h-screen w-screen'>
           <Suspense fallback={null}>
             <Dog scale={2} position={[0, -1.6, 0]} rotation={[0.0, -0.3, 0]} />
             <Common color={'lightpink'} />
@@ -59,22 +55,13 @@ const FirstRow = () => {
 const SecondRow = () => {
   return (
     <Section>
-      <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
-        <View orbit className='relative h-full animate-bounce sm:h-48 sm:w-full'>
+      <div className='relative h-screen w-full'>
+        <View className='relative h-full'>
           <Suspense fallback={null}>
             <Duck route='/blob' scale={2} position={[0, -1.6, 0]} />
             <Common color={'lightblue'} />
           </Suspense>
         </View>
-      </div>
-      <div className='w-full p-6 sm:w-1/2'>
-        <h2 className='mb-3 text-3xl font-bold leading-none text-gray-800'>Dom and 3D are synchronized</h2>
-        <p className='mb-8 text-gray-600'>
-          3D Divs are renderer through the View component. It uses gl.scissor to cut the viewport into segments. You
-          tie a view to a tracking div which then controls the position and bounds of the viewport. This allows you to
-          have multiple views with a single, performant canvas. These views will follow their tracking elements,
-          scroll along, resize, etc.
-        </p>
       </div>
     </Section>
   )
